@@ -16,11 +16,20 @@ def get_soup(url):
             except:
                 print("\nAttempt: %d\n"%i)
     return(False)
-while True:
-    soup = get_soup(URL)
+
+old_score = "0 - 0"
+soup = get_soup(URL)
+while True and soup != False:
+
 
     score = soup.find("div", {"class" : "score"}).text
     lions = soup.find("div", {"class" : "hometeam"}).text
     tahs  = soup.find("div", {"class" : "awayteam"}).text
 
-    print("%s %s %s"%(lions, score, tahs))
+    new_score = "%s %s %s"%(lions, score, tahs)
+
+    if (new_score != old_score):
+        old_score = new_score
+        print(new_score)
+
+    soup = get_soup(URL)
