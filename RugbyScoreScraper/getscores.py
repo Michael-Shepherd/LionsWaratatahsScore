@@ -28,18 +28,19 @@ if __name__ == "__main__":
         debug = sys.argv[1]
 
     old_score = "0 - 0"
+    fulltime = "not"
     soup = get_soup(URL, debug)
-    while True and soup != False:
-
-
-        score = soup.find("div", {"class" : "score"}).text
-        lions = soup.find("div", {"class" : "hometeam"}).text
-        tahs  = soup.find("div", {"class" : "awayteam"}).text
+    while True and soup != False and "Full Time" not in fulltime:
+        score    = soup.find("div", {"class" : "score"}).text
+        lions    = soup.find("div", {"class" : "hometeam"}).text
+        tahs     = soup.find("div", {"class" : "awayteam"}).text
+        fulltime = soup.find("div", {"class" : "infocopy"}).text
 
         new_score = "%s %s %s"%(lions, score, tahs)
 
         if (new_score != old_score):
             old_score = new_score
-            print(new_score)
+            print("\n\t\t\t"+new_score)
+            print(fulltime)
 
         soup = get_soup(URL)
