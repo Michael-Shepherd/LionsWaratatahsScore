@@ -16,11 +16,11 @@ def get_soup(url):
             except:
                 print("\nAttempt: %d\n"%i)
     return(False)
+while True:
+    soup = get_soup(URL)
 
-soup = get_soup(URL)
+    score = soup.find("div", {"class" : "score"}).text
+    lions = soup.find("div", {"class" : "hometeam"}).text
+    tahs  = soup.find("div", {"class" : "awayteam"}).text
 
-score = soup.find("div", {"class" : "score"}).text
-lions = soup.find("div", {"class" : "hometeam"}).text
-tahs  = soup.find("div", {"class" : "awayteam"}).text
-
-print("%s %s %s"%(lions, score, tahs))
+    print("%s %s %s"%(lions, score, tahs))
