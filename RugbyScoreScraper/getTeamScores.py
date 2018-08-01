@@ -3,7 +3,15 @@ import time
 import sys
 import functions
 
-
+###############################################################################
+# Prints the details of every match from the given soup within the constraints
+# of the input variables.
+#
+# in:
+#   soup    - soup of required webpage
+#   team    - Team to view games of
+#   debug   - debug value
+###############################################################################
 def print_scores(soup, team="none", debug=0):
     scores = soup.findAll("tr", {"class":"results-alt"})
 
