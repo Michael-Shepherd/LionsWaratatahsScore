@@ -5,7 +5,7 @@ import functions
 
 ###############################################################################
 # Prints the details of every match from the given soup within the constraints
-# of the input variables.
+# of the input variables. needs sport24 page soup.
 #
 # in:
 #   soup    - soup of required webpage
@@ -25,6 +25,16 @@ def print_scores(soup, team="none", debug=0):
         else:
             pass
 
+
+###############################################################################
+# Executes when main
+#
+#
+#
+#
+#
+#
+###############################################################################
 if __name__ == "__main__":
     debug = 0
     team = "none"
