@@ -29,7 +29,7 @@ def print_scores(soup, team="none", debug=0):
 # Usage: python3 getTeamScores.py [Team Name] [debug]
 # 
 # This function will fetch the season scores for the 2018 Super rugby season
-# for either all teams or a specified team.S
+# for either all teams or a specified team.
 ###############################################################################
 if __name__ == "__main__":
     debug = 0
