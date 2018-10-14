@@ -22,10 +22,10 @@ python3 getTeamScores.py [Team Name] [debug]
 ```
 Usage python3 getSeasonScores.py <year> [debug]
 ```
-This is currently not displaying the scores in a user friendly fashion and needs to be fixed
 ## TODO
-
-* Fix getSeasonScores.py
+* Find issue with getTeamScores for older seasons
+* change getscores to fetch live scores if any are currently happening
 * Integrate all functions into one smooth flowing program
 * Implement a gui for usability
 * New use cases
+
