@@ -24,7 +24,9 @@ def print_scores(soup, debug=0):
             columns = row.findAll("td")
             for column in columns:
                 # Do not store header rows or bye rows
-                if "Team" in column.text or "Bye" in column.text:
+                if "Team" in column.text\
+                or "Bye" in column.text\
+                or "Not playing" in column.text:
                     print_list = False
                     break
                 row_list.append(re.sub('\s+', '', column.text))
