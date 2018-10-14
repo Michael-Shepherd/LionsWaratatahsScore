@@ -2,28 +2,38 @@ import requests
 import time
 import sys
 import functions
+import re
 
 ###############################################################################
-# This function will print all of the scores in the given soup
-# 
-# TODO: Orgainise output, as this currently only prints out html elements
-# 
+# This function will print all of the scores in the given soup from
+# www.superxv.com
+#
 # in:
 #   soup - soup of required webpage
 #   debug - debug value
 ###############################################################################
 def print_scores(soup, debug=0):
     # | Team | Score | vs | Team | Score | Date | MatchReport | Hilights |
+    print_list = True
+    template = "{} \n {} {} - {} {}"
     tables = soup.findAll("table", {"class":"fixturestable"})
     for table in tables:
         rows = table.findAll("tr");
         for row in rows:
+            row_list = []
             columns = row.findAll("td")
             for column in columns:
-                if ('<div align="center">Team</div>'):
-                    print(column)
-            print("__________________________________")
-        # print(table)
+                # Do not store header rows or bye rows
+                if "Team" in column.text or "Bye" in column.text:
+                    print_list = False
+                    break
+                row_list.append(re.sub('\s+', '', column.text))
+            if not print_list:
+                print_list = True
+            else:
+                print(template.format(row_list[5], row_list[0], row_list[1],\
+                row_list[3], row_list[4]))
+                print("__________________________________")
 
 ###############################################################################
 # Usage python3 getSeasonScores.py <year> [debug]
